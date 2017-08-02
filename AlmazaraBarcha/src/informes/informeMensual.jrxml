@@ -1,0 +1,387 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="055ecbce-4bfa-4a89-8950-ee134a266e39">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="14"/>
+	<style name="table">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<subDataset name="New Dataset 1" uuid="9e96579a-de7c-4564-920a-1ad7fc8c0dcf">
+		<queryString language="SQL">
+			<![CDATA[SELECT (SUM(mo.kgOliva) + SUM(ca.kgOliva)) AS entrada,(SUM(mo.kgOliva) + SUM(ca.kgOliva)) AS molturada, (SUM(mo.litrosAceiteProd) + SUM(ca.litrosAceiteCambio)) AS Aceite, SUM(mo.kgOrujo) AS Orujo, SUM(ca.maquilaReflejada) AS Maquila , (SUM(mo.litrosAceiteProd) + SUM(ca.litrosAceiteCambio)) AS Aceite, SUM(mo.kgOrujo) AS Orujo from molturacion mo, cambio ca WHERE mo.declara = 1 AND ca.declara = 1 AND month(ca.fecha)=1 AND year(ca.fecha)=2017
+GROUP BY day(ca.fecha);]]>
+		</queryString>
+		<field name="entrada" class="java.lang.Double"/>
+		<field name="molturada" class="java.lang.Double"/>
+		<field name="Aceite" class="java.lang.Double"/>
+		<field name="Orujo" class="java.lang.Double"/>
+		<field name="Maquila" class="java.lang.Double">
+			<fieldDescription><![CDATA[]]></fieldDescription>
+		</field>
+	</subDataset>
+	<parameter name="variable" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement x="354" y="0" width="101" height="28" uuid="af97279d-8525-4b9c-8357-c2c76a34aa46"/>
+				<textElement textAlignment="Justified">
+					<font size="20"/>
+				</textElement>
+				<text><![CDATA[ANEXO I-e]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="285" y="28" width="243" height="20" uuid="edf92647-228c-4708-b074-a4b4b55a6946"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ALMAZARAS: Contabilidad de existencias]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="244" y="48" width="324" height="24" uuid="b63e51cd-065c-45ac-bed5-f12e87ec8e80"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[Resumen mensual de aceite de producción proipia]]></text>
+			</staticText>
+		</band>
+	</title>
+	<detail>
+		<band height="470" splitType="Stretch">
+			<staticText>
+				<reportElement x="19" y="13" width="65" height="20" uuid="63bbc329-6e3e-4fec-92fa-b0239513817f"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Campaña:]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="3" y="44" width="380" height="143" uuid="b99d4fe3-3267-4497-94d6-77e7155127de"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="6" y="47" width="141" height="20" uuid="64909cc8-9ba5-4501-8d7c-660bf09c565d"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Numero RIA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="6" y="67" width="141" height="20" uuid="1010e01a-2045-4b59-8a67-8d6876fbcd2f"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Nombre o razón social]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="6" y="87" width="141" height="20" uuid="cc5c0dc6-ab5d-4a36-b0f3-da8acda29ccf"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Dirección]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="6" y="107" width="141" height="20" uuid="1365ac59-1561-4551-b6cd-099ccbc2f245"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Localidad]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="6" y="127" width="141" height="20" uuid="fa46cb36-6e16-48f5-a15a-8a58ee72c1c0"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Provincia]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="6" y="147" width="141" height="20" uuid="66f0877c-a6cd-4a53-a460-6b221c4c911a"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Telefono]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="6" y="167" width="141" height="20" uuid="552c54bb-8098-4155-8589-cd990f3ccf0d"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Correo electronico]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="147" y="47" width="100" height="20" uuid="f69ac493-ef8d-4d08-90f7-6bfbf49edd3e"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[46/42273]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="147" y="67" width="222" height="20" uuid="185daa87-ffa7-45d0-bb57-98cfe111df86"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[ALMAZARA BARCHA S.C]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="147" y="87" width="100" height="20" uuid="196f175b-c6be-4d57-bada-00dbd9c62df1"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[La Fuente 10]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="147" y="107" width="100" height="20" uuid="585bb6f0-e260-461c-87d4-89f51130911e"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Navarres]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="147" y="127" width="100" height="20" uuid="ff685290-7cad-476f-96e2-680d24a2c514"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Valencia]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="147" y="147" width="100" height="20" uuid="89d94702-b621-4018-97eb-5f216f0ee418"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[962266359]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="147" y="167" width="222" height="20" uuid="603b73d2-d084-4146-8add-7f7b7cfcc0fb"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[almazarabarcha@gmail.com]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="247" y="47" width="66" height="20" uuid="ff6ae76f-d871-4d65-9900-af03f79daaed"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[NIF/CIF]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="313" y="47" width="70" height="20" uuid="e09e335d-dae5-42ed-a4b5-a81316fa3d44"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[J98569700]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="247" y="127" width="92" height="20" uuid="64a54a7b-8ea4-428b-820b-25d34d133ac8"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Codigo Postal]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="339" y="127" width="44" height="20" uuid="791bcec3-dc8a-4c14-95a2-1b14a3c498bc"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[46823]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="247" y="147" width="66" height="20" uuid="a7913465-63d0-4ccc-b966-d173edac8204"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[FAX]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="239" y="13" width="100" height="20" uuid="58742769-71b6-47dc-ab2b-72da682f71b7"/>
+				<textFieldExpression><![CDATA[$P{variable}]]></textFieldExpression>
+			</textField>
+			<rectangle>
+				<reportElement x="3" y="255" width="69" height="20" uuid="ad13c37d-37a9-4473-98ef-4e6519094260"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="72" y="255" width="69" height="20" uuid="f778e2e8-9841-45b9-8857-bedbba80c445"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="141" y="255" width="86" height="20" uuid="5b389ba7-3944-4e78-b878-7ae032ab7ddf"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="227" y="255" width="86" height="20" uuid="68614a2c-8433-44cb-81b3-3e36dab4940c"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="313" y="255" width="69" height="20" uuid="446ea57f-6145-4c8d-9dc8-5e0fb7233dbb"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="227" y="223" width="86" height="32" uuid="18628784-c702-4311-9c74-ef9548056b5f"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="141" y="223" width="86" height="32" uuid="efb38144-3ab1-40a6-a1b4-b914a3f99b38"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="72" y="203" width="69" height="52" uuid="1e7d5501-0ac9-48e7-bab5-0e65a9e75d81"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="141" y="203" width="172" height="20" uuid="d7420e87-25b6-496c-921e-10488db3463b"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="313" y="203" width="69" height="52" uuid="36261d75-9664-4d67-bd3a-8bfa179d7cc3"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="227" y="322" width="103" height="33" uuid="fc4511d5-6742-4338-a04b-404a0286416a"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="4" y="322" width="85" height="33" uuid="b35bce49-be2d-4bd8-a2d7-7a903c297c81"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="330" y="322" width="52" height="33" uuid="625860ae-dede-4231-9d63-6542c29198bf"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="162" y="322" width="65" height="33" uuid="68e3c699-1987-4b9e-923c-75eee0ccd4b0"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="89" y="322" width="73" height="30" uuid="6f700cbc-acc3-447a-8838-6709f9cd338e"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="330" y="352" width="52" height="33" uuid="578e6ad8-9501-4afe-906e-e771f55d53c0"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="89" y="352" width="73" height="33" uuid="27ef1000-f0fc-4f55-9f4a-f2331abe1d64"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="227" y="352" width="103" height="33" uuid="5e72d499-898a-43d8-9167-bb71e620c3a0"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="162" y="352" width="65" height="33" uuid="f6bc0a1f-aa34-4599-830e-bb9b48f71450"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="4" y="352" width="85" height="33" uuid="90763ef5-3bb6-4f7f-b3d1-a0def25c3dde"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="330" y="382" width="52" height="33" uuid="63c35045-ef66-432a-867e-a87fe2ae780d"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="89" y="382" width="73" height="33" uuid="d1844c53-4f04-44ac-9751-fff3b43d1b44"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="227" y="382" width="103" height="33" uuid="a303b921-fb94-42a2-91fe-ebd771204cda"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="162" y="382" width="65" height="33" uuid="703797cb-1ddf-4950-9e76-08ef0b6be48a"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="4" y="382" width="85" height="33" uuid="be657655-d1a4-44e8-b53e-0c37feb736d1"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="330" y="291" width="52" height="31" uuid="87cbb161-c416-44b8-b1d8-8de2eec78339"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="89" y="291" width="73" height="31" uuid="ff046f2d-38d3-4093-b7c3-b1b25648e9ae"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="227" y="291" width="103" height="31" uuid="08c18a9f-1cee-4e04-bf83-cb89d7b2c92d"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="162" y="291" width="65" height="31" uuid="4a9fc75b-61e4-4cd0-b311-ec543f65d4e7"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="3" y="255" width="69" height="20" uuid="42317402-f071-477d-a155-b00e882778ee"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[Aceite virgen]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="72" y="203" width="69" height="52" uuid="85578be3-798d-4330-b249-518e3e3dbcbf"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Existencias a principios de campaña]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="142" y="223" width="86" height="32" uuid="b0ce22a5-e58a-4896-b7da-25aea78bc0a1"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Entradas de aceite producido]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="142" y="203" width="172" height="20" uuid="7d23c1b8-8467-4c17-bb09-3b9396c974ee"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Total campaña]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="227" y="223" width="86" height="32" uuid="49716300-8285-43bf-abb9-bfc58239a3f1"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Salidas]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="314" y="203" width="68" height="52" uuid="98e25a18-7140-4534-950a-5ba55546cfaa"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Existencias al final de este mes]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="3" y="203" width="69" height="52" uuid="a2515147-2674-4000-91d7-4ffe3fcca700"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Movimiento de aceite]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="4" y="291" width="85" height="31" uuid="cdee96fa-38f3-4080-bcd1-99394d85eb7c"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Detalle salidas de aceite]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="6" y="322" width="83" height="30" uuid="f2e36030-46a9-4672-81f5-735ff55f4494"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Hasta mes anterior]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="3" y="352" width="86" height="30" uuid="5ec8b095-09f0-445c-8fd1-2ae7a2a2afb1"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Mes actual]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="3" y="385" width="86" height="30" uuid="7cc1afb4-a741-40a9-9420-53e522cb9c65"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Total]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="89" y="291" width="73" height="31" uuid="36648642-553e-47cf-9be4-ed22909b6428"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Envasadora propia]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="162" y="291" width="65" height="31" uuid="f874c0d3-d248-4e03-b534-20decbabbc49"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Otras entidades]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="228" y="291" width="102" height="31" uuid="6d6d4b08-bc99-4ede-8c34-cd94fac586fe"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Almacenamiento y patrimonio]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="330" y="291" width="52" height="31" uuid="ad36c60c-14dd-4127-a827-104e888a2fee"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Total]]></text>
+			</staticText>
+		</band>
+	</detail>
+</jasperReport>
