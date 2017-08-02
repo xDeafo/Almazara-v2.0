@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 06-oct-2016 10:48:59 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="pojos.Proveedor" table="proveedor" catalog="almazaradb" optimistic-lock="version">
+        <id name="idProveedor" type="java.lang.Integer">
+            <column name="idProveedor" />
+            <generator class="identity" />
+        </id>
+        <property name="nombre" type="string">
+            <column name="nombre" length="50" not-null="true" unique="true" />
+        </property>
+        <property name="dni" type="string">
+            <column name="dni" length="9" />
+        </property>
+        <property name="direccion" type="string">
+            <column name="direccion" length="70" />
+        </property>
+        <property name="telefono" type="string">
+            <column name="telefono" length="9" />
+        </property>
+        <property name="poblacion" type="string">
+            <column name="poblacion" length="25" />
+        </property>
+        <property name="subvencionado" type="boolean">
+            <column name="subvencionado" not-null="true" />
+        </property>
+        <set name="compras" table="compra" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="Proveedor_idProveedor" not-null="true" />
+            </key>
+            <one-to-many class="pojos.Compra" />
+        </set>
+        <set name="cambios" table="cambio" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="Proveedor_idProveedor" not-null="true" />
+            </key>
+            <one-to-many class="pojos.Cambio" />
+        </set>
+        <set name="molturacions" table="molturacion" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="Proveedor_idProveedor" not-null="true" />
+            </key>
+            <one-to-many class="pojos.Molturacion" />
+        </set>
+    </class>
+</hibernate-mapping>

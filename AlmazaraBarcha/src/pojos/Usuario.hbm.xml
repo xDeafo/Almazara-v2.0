@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 06-oct-2016 10:48:59 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="pojos.Usuario" table="usuario" catalog="almazaradb" optimistic-lock="version">
+        <id name="idUsuario" type="java.lang.Integer">
+            <column name="idUsuario" />
+            <generator class="identity" />
+        </id>
+        <property name="nombre" type="string">
+            <column name="nombre" length="45" not-null="true" />
+        </property>
+        <property name="usuario" type="string">
+            <column name="usuario" length="45" not-null="true" />
+        </property>
+        <property name="contrasenya" type="string">
+            <column name="contrasenya" length="45" not-null="true" />
+        </property>
+        <set name="molturacions" table="molturacion" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="Usuario_idUsuario" not-null="true" />
+            </key>
+            <one-to-many class="pojos.Molturacion" />
+        </set>
+        <set name="compras" table="compra" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="Usuario_idUsuario" not-null="true" />
+            </key>
+            <one-to-many class="pojos.Compra" />
+        </set>
+        <set name="ventas" table="venta" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="Usuario_idUsuario" not-null="true" />
+            </key>
+            <one-to-many class="pojos.Venta" />
+        </set>
+        <set name="cambios" table="cambio" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="Usuario_idUsuario" not-null="true" />
+            </key>
+            <one-to-many class="pojos.Cambio" />
+        </set>
+    </class>
+</hibernate-mapping>

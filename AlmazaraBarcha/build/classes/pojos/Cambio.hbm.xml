@@ -1,0 +1,72 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 06-oct-2016 10:48:59 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="pojos.Cambio" table="cambio" catalog="almazaradb" optimistic-lock="version">
+        <id name="idCambio" type="java.lang.Integer">
+            <column name="idCambio" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="proveedor" class="pojos.Proveedor" fetch="select">
+            <column name="Proveedor_idProveedor" not-null="true" />
+        </many-to-one>
+        <many-to-one name="usuario" class="pojos.Usuario" fetch="select">
+            <column name="Usuario_idUsuario" not-null="true" />
+        </many-to-one>
+        <property name="kgOliva" type="float">
+            <column name="kgOliva" precision="12" scale="0" not-null="true" />
+        </property>
+        <property name="paga" type="boolean">
+            <column name="paga" not-null="true" />
+        </property>
+        <property name="retira" type="boolean">
+            <column name="retira" not-null="true" />
+        </property>
+        <property name="rendimiento" type="float">
+            <column name="rendimiento" precision="12" scale="0" not-null="true" />
+        </property>
+        <property name="litrosAceiteCambio" type="float">
+            <column name="litrosAceiteCambio" precision="12" scale="0" not-null="true" />
+        </property>
+        <property name="kgAceiteCambio" type="java.lang.Float">
+            <column name="kgAceiteCambio" precision="12" scale="0" />
+        </property>
+        <property name="litrosAceiteRetirados" type="float">
+            <column name="litrosAceiteRetirados" precision="12" scale="0" not-null="true" />
+        </property>
+        <property name="kgAceiteRetirados" type="java.lang.Float">
+            <column name="kgAceiteRetirados" precision="12" scale="0" />
+        </property>
+        <property name="porcentajeMaquila" type="float">
+            <column name="porcentajeMaquila" precision="12" scale="0" not-null="true" />
+        </property>
+        <property name="maquila" type="float">
+            <column name="maquila" precision="12" scale="0" not-null="true" />
+        </property>
+        <property name="precioMolturacion" type="float">
+            <column name="precioMolturacion" precision="12" scale="0" not-null="true" />
+        </property>
+        <property name="totalPagar" type="float">
+            <column name="totalPagar" precision="12" scale="0" not-null="true" />
+        </property>
+        <property name="maquilaReflejada" type="float">
+            <column name="maquilaReflejada" precision="12" scale="0" not-null="true" />
+        </property>
+        <property name="kgOlivaReflejados" type="float">
+            <column name="kgOlivaReflejados" precision="12" scale="0" not-null="true" />
+        </property>
+        <property name="poblacionOliva" type="string">
+            <column name="poblacionOliva" length="30" />
+        </property>
+        <property name="observaciones" type="string">
+            <column name="Observaciones" length="100" />
+        </property>
+        <property name="fecha" type="timestamp">
+            <column name="fecha" length="19" not-null="true" />
+        </property>
+        <property name="declara" type="boolean">
+            <column name="declara" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

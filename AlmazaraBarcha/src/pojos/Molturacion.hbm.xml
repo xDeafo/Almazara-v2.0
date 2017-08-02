@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 06-oct-2016 10:48:59 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="pojos.Molturacion" table="molturacion" catalog="almazaradb" optimistic-lock="version">
+        <id name="idMolturacion" type="java.lang.Integer">
+            <column name="idMolturacion" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="proveedor" class="pojos.Proveedor" fetch="select">
+            <column name="Proveedor_idProveedor" not-null="true" />
+        </many-to-one>
+        <many-to-one name="usuario" class="pojos.Usuario" fetch="select">
+            <column name="Usuario_idUsuario" not-null="true" />
+        </many-to-one>
+        <property name="kgOliva" type="float">
+            <column name="kgOliva" precision="12" scale="0" not-null="true" />
+        </property>
+        <property name="litrosAceiteProd" type="float">
+            <column name="litrosAceiteProd" precision="12" scale="0" not-null="true" />
+        </property>
+        <property name="kgAceiteProd" type="java.lang.Float">
+            <column name="kgAceiteProd" precision="12" scale="0" />
+        </property>
+        <property name="kgOrujo" type="float">
+            <column name="kgOrujo" precision="12" scale="0" not-null="true" />
+        </property>
+        <property name="ingresoMolturacion" type="float">
+            <column name="ingresoMolturacion" precision="12" scale="0" not-null="true" />
+        </property>
+        <property name="fecha" type="timestamp">
+            <column name="fecha" length="19" not-null="true" />
+        </property>
+        <property name="pagada" type="boolean">
+            <column name="Pagada" not-null="true" />
+        </property>
+        <property name="declara" type="boolean">
+            <column name="declara" not-null="true" />
+        </property>
+        <property name="kgReflejadosDeclaracion" type="float">
+            <column name="kgReflejadosDeclaracion" precision="12" scale="0" not-null="true" />
+        </property>
+        <property name="maquila" type="float">
+            <column name="maquila" precision="12" scale="0" not-null="true" />
+        </property>
+        <property name="observaciones" type="string">
+            <column name="Observaciones" length="100" />
+        </property>
+        <property name="rendimiento" type="float">
+            <column name="rendimiento" precision="12" scale="0" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

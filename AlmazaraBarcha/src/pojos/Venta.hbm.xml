@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 22-nov-2016 13:00:57 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="pojos.Venta" table="venta" catalog="almazaradb" optimistic-lock="version">
+        <id name="idVenta" type="java.lang.Integer">
+            <column name="idVenta" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="cliente" class="pojos.Cliente" fetch="select">
+            <column name="Cliente_idCliente" not-null="true" />
+        </many-to-one>
+        <many-to-one name="usuario" class="pojos.Usuario" fetch="select">
+            <column name="Usuario_idUsuario" not-null="true" />
+        </many-to-one>
+        <property name="fecha" type="timestamp">
+            <column name="fecha" length="19" not-null="true" />
+        </property>
+        <property name="factura" type="boolean">
+            <column name="factura" not-null="true" />
+        </property>
+        <property name="regalo" type="boolean">
+            <column name="regalo" not-null="true" />
+        </property>
+        <property name="otro" type="boolean">
+            <column name="otro" not-null="true" />
+        </property>
+        <property name="totalVenta" type="float">
+            <column name="totalVenta" precision="12" scale="0" not-null="true" />
+        </property>
+        <property name="observaciones" type="string">
+            <column name="Observaciones" length="100" />
+        </property>
+        <property name="litrosDeclarables" type="float">
+            <column name="litrosDeclarables" precision="12" scale="0" not-null="true" />
+        </property>
+        <set name="productos" table="producto_has_venta" inverse="false" lazy="true" fetch="select">
+            <key>
+                <column name="Venta_idVenta" not-null="true" />
+            </key>
+            <many-to-many entity-name="pojos.Producto">
+                <column name="Producto_idProducto" not-null="true" />
+            </many-to-many>
+        </set>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,304 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="158" pageHeight="540" columnWidth="118" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="a5d3be50-cb11-4113-a12e-7b6c2fe03fdc">
+	<property name="ireport.zoom" value="1.8181818181818195"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Title" fontName="Times New Roman" fontSize="50" isBold="true" pdfFontName="Times-Bold"/>
+	<style name="SubTitle" forecolor="#736343" fontName="Arial" fontSize="18"/>
+	<style name="Column header" forecolor="#666666" fontName="Arial" fontSize="12" isBold="true"/>
+	<style name="Detail" fontName="Arial" fontSize="12"/>
+	<style name="Row" mode="Transparent">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$V{REPORT_COUNT}%2 == 0]]></conditionExpression>
+			<style backcolor="#E6DAC3"/>
+		</conditionalStyle>
+	</style>
+	<parameter name="idMolturacion" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+     molturacion.`kgOliva` AS molturacion_kgOliva,
+     molturacion.`ingresoMolturacion` AS molturacion_ingresoMolturacion,
+     molturacion.`fecha` AS molturacion_fecha,
+     molturacion.`Proveedor_idProveedor` AS molturacion_Proveedor_idProveedor,
+     molturacion.`litrosAceiteProd` AS molturacion_litrosAceiteProd,
+     usuario.`nombre` AS usuario_nombre,
+     proveedor.`nombre` AS proveedor_nombre,
+     proveedor.`dni` AS proveedor_dni,
+     proveedor.`direccion` AS proveedor_direccion,
+     proveedor.`telefono` AS proveedor_telefono,
+     proveedor.`poblacion` AS proveedor_poblacion,
+     molturacion.`idMolturacion` AS molturacion_idMolturacion
+FROM
+     `usuario` usuario INNER JOIN `molturacion` molturacion ON usuario.`idUsuario` = molturacion.`Usuario_idUsuario`
+     INNER JOIN `proveedor` proveedor ON molturacion.`Proveedor_idProveedor` = proveedor.`idProveedor`
+WHERE
+     molturacion.`idMolturacion` = $P{idMolturacion}]]>
+	</queryString>
+	<field name="molturacion_kgOliva" class="java.lang.Float"/>
+	<field name="molturacion_ingresoMolturacion" class="java.lang.Float"/>
+	<field name="molturacion_fecha" class="java.sql.Timestamp"/>
+	<field name="molturacion_Proveedor_idProveedor" class="java.lang.Integer"/>
+	<field name="usuario_nombre" class="java.lang.String"/>
+	<field name="proveedor_nombre" class="java.lang.String"/>
+	<field name="proveedor_dni" class="java.lang.String"/>
+	<field name="proveedor_direccion" class="java.lang.String"/>
+	<field name="proveedor_telefono" class="java.lang.String"/>
+	<field name="proveedor_poblacion" class="java.lang.String"/>
+	<field name="molturacion_idMolturacion" class="java.lang.Integer"/>
+	<field name="molturacion_litrosAceiteProd" class="java.lang.Float"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="188" splitType="Stretch">
+			<staticText>
+				<reportElement x="-10" y="124" width="120" height="16" uuid="e2aa7aec-f18c-41ec-82a6-da329eb92f03"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Calle la fuente Nº 10]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="58" y="156" width="52" height="16" uuid="4dcddd3e-da14-4c80-a4a3-1e3188620d79"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[CP 46823]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="-10" y="156" width="67" height="15" uuid="67998a6f-d38a-47df-a243-70ade91ef45f"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Navarrés, España]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="-10" y="140" width="68" height="16" uuid="f254c38c-486c-46bd-b561-2294d84f0130"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Tlf.  962 26 63 59]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="-10" y="171" width="120" height="17" uuid="5e3800eb-a8e8-4d99-82a3-8f3eb886914a"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[almazarabarcha@gmail.com]]></text>
+			</staticText>
+			<image>
+				<reportElement x="0" y="4" width="196" height="108" uuid="b45aeba5-d0f1-402f-b998-ae5d4cdf41eb"/>
+				<imageExpression><![CDATA["C:\\Program Files (x86)\\AlmazaraBarcha\\Recursos\\logoAlmazara.png"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="-12" y="-197" width="158" height="13" forecolor="#D0B48E" backcolor="#F2EBDF" uuid="f646b739-6062-4322-b1ba-89b7b287e820"/>
+				<textField pattern="EEEEE dd MMMMM yyyy">
+					<reportElement style="Column header" x="2" y="0" width="127" height="13" forecolor="#736343" uuid="e5b52c76-0a28-4d7b-8faf-c652385fffcb"/>
+					<textElement verticalAlignment="Middle">
+						<font size="8" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="287" splitType="Stretch">
+			<staticText>
+				<reportElement style="Column header" x="-12" y="53" width="67" height="24" forecolor="#736343" uuid="c197895d-fb75-48e4-99ee-c62417d2db12"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Fecha de petición:]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true">
+				<reportElement style="Detail" x="55" y="53" width="63" height="15" uuid="a17f4f83-72b2-43ad-9215-276d5e7edacc"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{molturacion_fecha}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="Column header" x="-12" y="79" width="67" height="10" forecolor="#736343" uuid="ee8a2cb4-d2ed-4f89-a610-dae2a8e7867f"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Kg de oliva:]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true">
+				<reportElement style="Detail" x="55" y="79" width="30" height="10" uuid="da5d77e5-138b-4520-b2f2-00c993da2c53"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{molturacion_kgOliva}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="Column header" x="20" y="227" width="48" height="20" forecolor="#000000" uuid="f9759429-695e-4dd9-8e62-4e92cd6dcb95"/>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[Importe:]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true">
+				<reportElement style="Detail" x="68" y="227" width="40" height="19" uuid="8d79a139-57b3-4674-ac30-8a7a79b5f812"/>
+				<textElement>
+					<font size="10" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{molturacion_ingresoMolturacion}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="Column header" x="-12" y="157" width="67" height="15" forecolor="#736343" uuid="a847f44f-99bb-4400-91a4-23db71e8ba53"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Nombre:]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true">
+				<reportElement style="Detail" x="55" y="157" width="63" height="15" uuid="93e15ac3-8189-41da-b681-e06d90a01fed"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{proveedor_nombre}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="Column header" x="-12" y="180" width="67" height="15" forecolor="#736343" uuid="7a350406-0dc0-47d7-9a8b-597c53b30bc1"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[DNI:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="108" y="227" width="9" height="20" uuid="85904737-ebbc-42df-9921-afb855d192f6"/>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[€]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="85" y="77" width="20" height="10" uuid="d09880b7-4816-49c5-8c91-3cffc1c7ecaa"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Kg]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="-12" y="198" width="67" height="15" forecolor="#736343" uuid="c43b20f6-fe36-40eb-98f4-8f7f4103d039">
+					<printWhenExpression><![CDATA[$F{proveedor_poblacion}!=null]]></printWhenExpression>
+				</reportElement>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Poblacion:]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true">
+				<reportElement style="Detail" x="55" y="38" width="63" height="13" uuid="99f93f20-dfb3-4f48-a97d-32ca4a58c539"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{molturacion_idMolturacion}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="Column header" x="-12" y="38" width="67" height="13" forecolor="#736343" uuid="7fa49d8c-a97f-4951-961c-aedc112a6b91"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Molturacion Nº:]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true">
+				<reportElement style="Detail" x="31" y="258" width="87" height="15" uuid="ea6c250f-6a6d-40e6-b768-eae4a81a128f"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{usuario_nombre}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="-12" y="258" width="43" height="15" uuid="251a7c29-6df3-4b8c-90f4-7827b7e26833"/>
+				<textElement>
+					<font fontName="Arial" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Emleado:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="-12" y="18" width="127" height="20" uuid="de1598c5-7e71-466a-b548-397eb54039cf"/>
+				<textElement>
+					<font size="9" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[DATOS DE MOLTURACION]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="-12" y="136" width="117" height="19" uuid="0ed07eb8-19aa-4ed5-9e73-5067e0fcfee4"/>
+				<textElement>
+					<font size="9" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[DATOS DEL PROVEEDOR]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true">
+				<reportElement style="Detail" x="55" y="180" width="63" height="15" uuid="9276481b-70ec-46f2-aa4c-b873cd833bad"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{proveedor_dni}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement style="Detail" x="55" y="198" width="63" height="15" uuid="a38d81c1-eaa7-42e2-9fca-1d25d443e2d6"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{proveedor_poblacion}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="-19" y="220" width="158" height="1" uuid="05e4e32e-94da-400d-b586-b0605b41394b"/>
+				<graphicElement>
+					<pen lineStyle="Dashed" lineColor="#666666"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="-19" y="130" width="158" height="1" uuid="84eab76d-09f5-4af4-b992-f557fa7942e2"/>
+				<graphicElement>
+					<pen lineStyle="Dashed" lineColor="#666666"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="-19" y="11" width="158" height="1" uuid="aa35bf83-d66d-4e63-a71e-bccafd554c06"/>
+				<graphicElement>
+					<pen lineStyle="Dashed" lineColor="#666666"/>
+				</graphicElement>
+			</line>
+			<frame>
+				<reportElement mode="Opaque" x="-20" y="272" width="158" height="13" forecolor="#D0B48E" backcolor="#F2EBDF" uuid="973df2e4-7871-421c-a50d-2bb5771690ee"/>
+			</frame>
+			<staticText>
+				<reportElement style="Column header" x="-12" y="96" width="67" height="10" forecolor="#736343" uuid="9f89123d-ec6b-4a24-a001-d7852e85a855"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Litros de aceite:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="55" y="96" width="30" height="10" uuid="fbc6df21-9ca4-49c5-a9bb-ac85cd6cfea6"/>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{molturacion_litrosAceiteProd}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="5" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="2" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

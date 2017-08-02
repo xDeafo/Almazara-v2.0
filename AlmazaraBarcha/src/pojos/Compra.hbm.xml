@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 06-oct-2016 10:48:59 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="pojos.Compra" table="compra" catalog="almazaradb" optimistic-lock="version">
+        <id name="idCompra" type="java.lang.Integer">
+            <column name="idCompra" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="proveedor" class="pojos.Proveedor" fetch="select">
+            <column name="Proveedor_idProveedor" not-null="true" />
+        </many-to-one>
+        <many-to-one name="usuario" class="pojos.Usuario" fetch="select">
+            <column name="Usuario_idUsuario" not-null="true" />
+        </many-to-one>
+        <property name="kgOliva" type="float">
+            <column name="kgOliva" precision="12" scale="0" not-null="true" />
+        </property>
+        <property name="precioKg" type="float">
+            <column name="precioKg" precision="12" scale="0" not-null="true" />
+        </property>
+        <property name="totalCompra" type="float">
+            <column name="totalCompra" precision="12" scale="0" not-null="true" />
+        </property>
+        <property name="pagado" type="boolean">
+            <column name="pagado" not-null="true" />
+        </property>
+        <property name="declara" type="boolean">
+            <column name="declara" not-null="true" />
+        </property>
+        <property name="factura" type="boolean">
+            <column name="factura" not-null="true" />
+        </property>
+        <property name="maquilaReflejada" type="float">
+            <column name="maquilaReflejada" precision="12" scale="0" not-null="true" />
+        </property>
+        <property name="observaciones" type="string">
+            <column name="observaciones" length="100" />
+        </property>
+        <property name="fecha" type="timestamp">
+            <column name="fecha" length="19" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

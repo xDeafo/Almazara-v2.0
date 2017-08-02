@@ -1,0 +1,294 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="158" pageHeight="540" columnWidth="118" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="adb00be2-be92-4843-97a9-3556a085df6e">
+	<property name="ireport.zoom" value="2.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Title" fontName="Times New Roman" fontSize="50" isBold="true" pdfFontName="Times-Bold"/>
+	<style name="SubTitle" forecolor="#736343" fontName="Arial" fontSize="18"/>
+	<style name="Column header" forecolor="#666666" fontName="Arial" fontSize="12" isBold="true"/>
+	<style name="Detail" fontName="Arial" fontSize="12"/>
+	<style name="Row" mode="Transparent">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$V{REPORT_COUNT}%2 == 0]]></conditionExpression>
+			<style backcolor="#E6DAC3"/>
+		</conditionalStyle>
+	</style>
+	<parameter name="idProv" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+     sum(cambio.`kgOliva`) AS cambio_kgOliva,
+     sum(cambio.`litrosAceiteCambio`) AS cambio_litrosAceiteCambio,
+     sum(cambio.`litrosAceiteRetirados`) AS cambio_litrosAceiteRetirados,
+     sum(cambio.`precioMolturacion`) AS cambio_Totalcambio,
+     proveedor.`nombre` AS proveedor_nombre,
+     proveedor.`poblacion` AS proveedor_poblacion,
+     usuario.`nombre` AS usuario_nombre
+FROM
+     `proveedor` proveedor INNER JOIN `cambio` cambio ON proveedor.`idProveedor` = cambio.`Proveedor_idProveedor`
+     INNER JOIN `usuario` usuario ON cambio.`Usuario_idUsuario` = usuario.`idUsuario`
+WHERE
+     cambio.`paga` = 0 AND proveedor.`idProveedor` = $P{idProv}]]>
+	</queryString>
+	<field name="cambio_kgOliva" class="java.lang.Float"/>
+	<field name="cambio_litrosAceiteCambio" class="java.lang.Float"/>
+	<field name="cambio_litrosAceiteRetirados" class="java.lang.Float"/>
+	<field name="cambio_Totalcambio" class="java.lang.Float"/>
+	<field name="proveedor_nombre" class="java.lang.String"/>
+	<field name="proveedor_poblacion" class="java.lang.String"/>
+	<field name="usuario_nombre" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="188" splitType="Stretch">
+			<staticText>
+				<reportElement x="-10" y="124" width="120" height="16" uuid="e2aa7aec-f18c-41ec-82a6-da329eb92f03"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Calle la fuente Nº 10]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="58" y="156" width="52" height="16" uuid="4dcddd3e-da14-4c80-a4a3-1e3188620d79"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[CP 46823]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="-10" y="156" width="67" height="15" uuid="67998a6f-d38a-47df-a243-70ade91ef45f"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Navarrés, España]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="-10" y="140" width="68" height="16" uuid="f254c38c-486c-46bd-b561-2294d84f0130"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Tlf.  962 26 63 59]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="-10" y="171" width="120" height="17" uuid="5e3800eb-a8e8-4d99-82a3-8f3eb886914a"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[almazarabarcha@gmail.com]]></text>
+			</staticText>
+			<image>
+				<reportElement x="0" y="4" width="399" height="110" uuid="b4138d20-07bf-41c8-8613-6d730185cc4f"/>
+				<imageExpression><![CDATA["C:\\Program Files (x86)\\AlmazaraBarcha\\Recursos\\logoAlmazara.png"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="-12" y="-197" width="158" height="13" forecolor="#D0B48E" backcolor="#F2EBDF" uuid="f646b739-6062-4322-b1ba-89b7b287e820"/>
+				<textField pattern="EEEEE dd MMMMM yyyy">
+					<reportElement style="Column header" x="3" y="0" width="127" height="13" forecolor="#736343" uuid="e5b52c76-0a28-4d7b-8faf-c652385fffcb"/>
+					<textElement verticalAlignment="Middle">
+						<font size="8" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="5" splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="278" splitType="Stretch">
+			<staticText>
+				<reportElement style="Column header" x="-12" y="32" width="67" height="13" forecolor="#736343" uuid="c197895d-fb75-48e4-99ee-c62417d2db12"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Fecha:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="-12" y="52" width="67" height="10" forecolor="#736343" uuid="ee8a2cb4-d2ed-4f89-a610-dae2a8e7867f"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Kg de oliva:]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true">
+				<reportElement style="Detail" x="60" y="52" width="41" height="10" uuid="da5d77e5-138b-4520-b2f2-00c993da2c53"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{cambio_kgOliva}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="Column header" x="20" y="218" width="48" height="20" forecolor="#000000" uuid="f9759429-695e-4dd9-8e62-4e92cd6dcb95"/>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[Importe:]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true">
+				<reportElement style="Detail" x="68" y="218" width="40" height="19" uuid="8d79a139-57b3-4674-ac30-8a7a79b5f812"/>
+				<textElement>
+					<font size="10" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{cambio_Totalcambio}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="Column header" x="-12" y="156" width="67" height="15" forecolor="#736343" uuid="a847f44f-99bb-4400-91a4-23db71e8ba53"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Nombre:]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true">
+				<reportElement style="Detail" x="55" y="156" width="63" height="15" uuid="93e15ac3-8189-41da-b681-e06d90a01fed"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{proveedor_nombre}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="108" y="218" width="9" height="20" uuid="85904737-ebbc-42df-9921-afb855d192f6"/>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[€]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="101" y="48" width="20" height="12" uuid="d09880b7-4816-49c5-8c91-3cffc1c7ecaa"/>
+				<textElement verticalAlignment="Bottom">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Kg]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="-12" y="182" width="67" height="15" forecolor="#736343" uuid="c43b20f6-fe36-40eb-98f4-8f7f4103d039">
+					<printWhenExpression><![CDATA[$F{proveedor_poblacion}!=null]]></printWhenExpression>
+				</reportElement>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Poblacion:]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true">
+				<reportElement style="Detail" x="31" y="247" width="87" height="15" uuid="ea6c250f-6a6d-40e6-b768-eae4a81a128f"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{usuario_nombre}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="-12" y="247" width="43" height="15" uuid="251a7c29-6df3-4b8c-90f4-7827b7e26833"/>
+				<textElement>
+					<font fontName="Arial" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Emleado:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="-12" y="12" width="127" height="20" uuid="de1598c5-7e71-466a-b548-397eb54039cf"/>
+				<textElement>
+					<font size="9" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[DATOS DE CAMBIO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="-12" y="127" width="117" height="19" uuid="0ed07eb8-19aa-4ed5-9e73-5067e0fcfee4"/>
+				<textElement>
+					<font size="9" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[DATOS DEL PROVEEDOR]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true">
+				<reportElement style="Detail" x="55" y="182" width="63" height="15" uuid="a38d81c1-eaa7-42e2-9fca-1d25d443e2d6"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{proveedor_poblacion}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="-19" y="211" width="158" height="1" uuid="05e4e32e-94da-400d-b586-b0605b41394b"/>
+				<graphicElement>
+					<pen lineStyle="Dashed" lineColor="#666666"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="-19" y="121" width="158" height="1" uuid="84eab76d-09f5-4af4-b992-f557fa7942e2"/>
+				<graphicElement>
+					<pen lineStyle="Dashed" lineColor="#666666"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="-19" y="2" width="158" height="1" uuid="aa35bf83-d66d-4e63-a71e-bccafd554c06"/>
+				<graphicElement>
+					<pen lineStyle="Dashed" lineColor="#666666"/>
+				</graphicElement>
+			</line>
+			<frame>
+				<reportElement mode="Opaque" x="-20" y="263" width="158" height="13" forecolor="#D0B48E" backcolor="#F2EBDF" uuid="973df2e4-7871-421c-a50d-2bb5771690ee"/>
+			</frame>
+			<staticText>
+				<reportElement x="-12" y="69" width="67" height="10" forecolor="#736343" uuid="f6e287f4-6be4-4091-aee2-887338b10eb6"/>
+				<textElement>
+					<font fontName="Arial" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Litros retirados:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="60" y="69" width="41" height="10" uuid="d3c0e9ab-aa89-4ef4-b86e-14f267021b5c"/>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{cambio_litrosAceiteRetirados}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="101" y="65" width="20" height="12" uuid="9264503b-9a62-49c5-84bf-a0b2d4192326"/>
+				<textElement verticalAlignment="Bottom">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Kg]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="60" y="86" width="41" height="10" uuid="cca5e8e6-8394-44e3-8d56-f66fb29381f0"/>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{cambio_litrosAceiteCambio}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="-12" y="86" width="67" height="10" forecolor="#736343" uuid="6db8e747-9b76-4721-8f30-1c83e2f1d703"/>
+				<textElement>
+					<font fontName="Arial" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Litros cambio:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="101" y="82" width="20" height="12" uuid="8cd626ad-27a8-489f-beb6-3beae2418927"/>
+				<textElement verticalAlignment="Bottom">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Kg]]></text>
+			</staticText>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement style="Column header" x="60" y="32" width="61" height="13" forecolor="#736343" uuid="47765eeb-e354-4c46-a1da-10b11520a8bd"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="5" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="7" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="7" splitType="Stretch"/>
+	</summary>
+</jasperReport>
